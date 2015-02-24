@@ -1,4 +1,5 @@
 # Django settings for {{ project_name }} project.
+import json
 import os
 import re
 
@@ -96,12 +97,15 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.transaction.TransactionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'reversion.middleware.RevisionMiddleware',
+    'django.contrib.redirects.middleware.RedirectFallbackMiddleware'
 )
+
+SITE_ID = 1
 
 ROOT_URLCONF = '{{ project_name }}.urls'
 
@@ -126,6 +130,7 @@ INSTALLED_APPS = (
     'django.contrib.humanize',
     'django.contrib.sitemaps',
     'django.contrib.admin',
+    'django.contrib.sites',
     'django.contrib.redirects',
 
     # External apps
@@ -224,3 +229,82 @@ BONFIRE_CONFIG = {
     "WIDGET_PATHS": ("main.widgets", ),
     "PAGES_PATHS": ("pages", ),
     "WIDGETS": {"FormWidget": {"FORM_PATHS": ("main.forms", )}}
+}
+
+LOGIN_URL = "/bonfire/login/"
+
+def tinymce_get_style_formats():
+    #load custom_formats file
+    try:
+        cf_file = open(os.path.join(PROJECT_DIR, 'static', 'custom_formats.json'))
+    except IOError, e:
+        cf_file = None
+        pass
+    try:
+        cf_json = json.loads(cf_file.read())
+        cf_json["style_formats"]
+    except:
+        cf_json = {"style_formats": [
+            {"title": "Headers", "items": [
+                {"title": "Header 1", "format": "h1"},
+                {"title": "Header 2", "format": "h2"},
+                {"title": "Header 3", "format": "h3"},
+                {"title": "Header 4", "format": "h4"},
+                {"title": "Header 5", "format": "h5"},
+                {"title": "Header 6", "format": "h6"}
+            ]},
+            {"title": "Inline", "items": [
+                {"title": "Bold", "icon": "bold", "format": "bold"},
+                {"title": "Italic", "icon": "italic", "format": "italic"},
+                {"title": "Underline", "icon": "underline", "format": "underline"},
+                {"title": "Strikethrough", "icon": "strikethrough", "format": "strikethrough"},
+                {"title": "Superscript", "icon": "superscript", "format": "superscript"},
+                {"title": "Subscript", "icon": "subscript", "format": "subscript"},
+                {"title": "Code", "icon": "code", "format": "code"}
+            ]},
+            {"title": "Blocks", "items": [
+                {"title": "Paragraph", "format": "p"},
+                {"title": "Blockquote", "format": "blockquote"},
+                {"title": "Div", "format": "div"},
+                {"title": "Pre", "format": "pre"}
+            ]},
+            {"title": "Alignment", "items": [
+                {"title": "Left", "icon": "alignleft", "format": "alignleft"},
+                {"title": "Center", "icon": "aligncenter", "format": "aligncenter"},
+                {"title": "Right", "icon": "alignright", "format": "alignright"},
+                {"title": "Justify", "icon": "alignjustify", "format": "alignjustify"}
+            ]}],
+                   }
+    return cf_json["style_formats"]
+
+
+def tinymce_get_css():
+    try:
+        cf_file = open(os.path.join(PROJECT_DIR, 'static', 'custom_formats.json'))
+    except IOError, e:
+        cf_file = None
+        pass
+
+    try:
+        cf_json = json.loads(cf_file.read())
+        cf_json["content_css"]
+    except:
+        cf_json = {"content_css": []}
+
+    return map(lambda x: STATIC_URL + x, cf_json["content_css"])
+
+
+TINYMCE_DEFAULT_CONFIG = {
+    'plugins': "advlist, anchor, charmap, code, contextmenu, fullscreen, image, link, "
+               "lists, media, paste, preview, print, searchreplace, table, wordcount",
+    'skin': "lightgray",
+    'custom_undo_redo_levels': 10,
+    'width': "700px",
+    'style_formats': tinymce_get_style_formats(),
+    'content_css': tinymce_get_css(),
+    'extended_valid_elements': 'a[class|href|onmouseover|onmouseout|onclick]',
+}
+
+ADMIN_TITLE = "Bonfire - Admin Backend"
+
+CRISPY_TEMPLATE_PACK = 'bootstrap3'

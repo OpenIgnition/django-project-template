@@ -1,0 +1,26 @@
+<!DOCTYPE html>{% load static from staticfiles %}{% compress load bonfire_tags adx_tags %}<!-- template-name:"Category page" -->
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>{{ project_name }}</title>
+
+    {% compress css %}
+        <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+        <link rel="stylesheet" href="{% static 'css/lightbox.css' %}"/>
+        <link rel="stylesheet" href="{% static 'css/search.css' %}"/>
+    {% endcompress %}
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body>
+{% bonfire_box title="PROCESS" %}
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+{% compress js %}
+    <script src="{% static 'js/jquery.mousewheel.min.js' %}"></script>
+    <script src="{% static 'js/common.js' %}"></script>
+    <script src="{% static 'js/lightbox.min.js' %}"></script>
+{% endcompress %}
+</body>
+</html>
