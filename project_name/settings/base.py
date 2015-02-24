@@ -1,5 +1,6 @@
 # Django settings for {{ project_name }} project.
 import os
+import re
 
 BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
 PROJECT_ROOT = os.path.abspath(os.path.join(BASE_DIR, os.pardir))
@@ -124,8 +125,25 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.humanize',
     'django.contrib.sitemaps',
+    'django.contrib.admin',
+    'django.contrib.redirects',
+
     # External apps
+    'haystack',
+    'crispy_forms',
+    'raven.contrib.django.raven_compat',
     'compressor',
+    'south',
+    'tinymce',
+    'mptt',
+    'reversion',
+    'sorl.thumbnail',
+
+    # CMS
+    'bonfire',
+
+    # Project itself
+    '{{ project_name }}'
 )
 
 # A sample logging configuration. The only tangible logging
@@ -178,3 +196,31 @@ LOGGING = {
 COMPRESS_PRECOMPILERS = (
     ('text/less', 'lessc {infile} {outfile}'),
 )
+
+# Haystack
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
+        'PATH': os.path.join(PROJECT_ROOT, 'whoosh_index'),
+    },
+}
+
+# Bonfire
+PROJECT_DIR = BASE_DIR
+
+TEMPLATES = {}
+PAGES_TEMPLATE_DIR = os.path.join(PROJECT_DIR, 'templates/pages')
+
+for template in os.listdir(PAGES_TEMPLATE_DIR):
+    _file = open(os.path.join(PAGES_TEMPLATE_DIR, template))
+    content = _file.readline()
+    template_name = re.findall("template-name:\"([^\"]+)\"", content)
+    if template_name:
+        TEMPLATES[template_name[0]] = {"template_file": "pages/" + template}
+    else:
+        TEMPLATES[template] = {"template_file": "pages/" + template}
+
+BONFIRE_CONFIG = {
+    "WIDGET_PATHS": ("main.widgets", ),
+    "PAGES_PATHS": ("pages", ),
+    "WIDGETS": {"FormWidget": {"FORM_PATHS": ("main.forms", )}}

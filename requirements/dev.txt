@@ -3,6 +3,8 @@ django-debug-toolbar==1.2.1
 # Required by django-debug-toolbar
 sqlparse==0.1.11
 
+ipython==2.4.1
+
 coverage==3.7.1
 flake8==2.2.5
 # Required by flake8

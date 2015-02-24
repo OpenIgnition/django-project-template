@@ -1,2 +1,4 @@
 -r base.txt
 python-memcached==1.53
+uWSGI==2.0.9
+gunicorn==19.0.0
