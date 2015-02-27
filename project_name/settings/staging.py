@@ -7,10 +7,9 @@ DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 DATABASES['default']['NAME'] = '{{ project_name }}_staging'
-DATABASES['default']['USER'] = '{{ project_name }}_staging'
-DATABASES['default']['HOST'] = os.environ.get('DB_HOST', '')
-DATABASES['default']['PORT'] = os.environ.get('DB_PORT', '')
-DATABASES['default']['PASSWORD'] = os.environ['DB_PASSWORD']
+DATABASES['default']['USER'] = '{{ project_name }}'
+DATABASES['default']['PORT'] = '{{ project_name }}'
+DATABASES['default']['PASSWORD'] = '{{ project_name }}'
 
 WEBSERVER_ROOT = '/var/www/{{ project_name }}/'
 
@@ -45,10 +44,6 @@ STATICFILES_FINDERS = (
 COMPRESS_ENABLED = True
 
 COMPRESS_OFFLINE = True
-
-SESSION_COOKIE_SECURE = True
-
-SESSION_COOKIE_HTTPONLY = True
 
 ALLOWED_HOSTS = []  # TODO
 
