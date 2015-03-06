@@ -121,6 +121,8 @@ FIXTURE_DIRS = (
 )
 
 INSTALLED_APPS = (
+    'grappelli',
+    'filebrowser',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -129,9 +131,9 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.humanize',
     'django.contrib.sitemaps',
-    'django.contrib.admin',
     'django.contrib.sites',
     'django.contrib.redirects',
+    'django.contrib.admin',
 
     # External apps
     'haystack',
@@ -143,6 +145,7 @@ INSTALLED_APPS = (
     'mptt',
     'reversion',
     'sorl.thumbnail',
+    'robots',
 
     # CMS
     'bonfire',
@@ -196,6 +199,8 @@ LOGGING = {
         },
     }
 }
+
+SESSION_ENGINE = 'django.contrib.sessions.backends.cached_db'
 
 # Application settings
 COMPRESS_PRECOMPILERS = (
@@ -308,3 +313,6 @@ TINYMCE_DEFAULT_CONFIG = {
 ADMIN_TITLE = "Bonfire - Admin Backend"
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
+
+# django-filebrowser
+FILEBROWSER_DIRECTORY = ''
