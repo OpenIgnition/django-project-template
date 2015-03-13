@@ -7,13 +7,14 @@ from filebrowser.sites import site
 admin.autodiscover()
 
 urlpatterns = patterns('',
-                       url(r'^tinymce/', include('tinymce.urls')),
-                       url(r'^superadmin/', include(admin.site.urls)),
-                       url(r'^admin/filebrowser/', include(site.urls)),
-                       url(r'^account/', include('django.contrib.auth.urls')),
-                       url(r'^robots\.txt$', include('robots.urls')),
-                       url(r'', include('bonfire.urls')),
-                       )
+    url(r'^tinymce/', include('tinymce.urls')),
+    url(r'^superadmin/', include(admin.site.urls)),
+    url(r'^admin/filebrowser/', include(site.urls)),
+    url(r'^grappelli/', include('grappelli.urls')),
+    url(r'^account/', include('django.contrib.auth.urls')),
+    url(r'^robots\.txt$', include('robots.urls')),
+    url(r'', include('bonfire.urls')),
+)
 
 if settings.DEBUG:
     from django.contrib.staticfiles.urls import staticfiles_urlpatterns
