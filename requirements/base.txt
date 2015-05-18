@@ -2,7 +2,7 @@ psycopg2==2.5.4
 Pillow==2.7.0
 Django==1.6.10
 South==0.8.4
-pytz==2014.10
+pytz==2015.4
 
 django-mptt==0.6.1
 django-reversion==1.8.2
@@ -13,7 +13,7 @@ Whoosh==2.6.0
 python-slugify==0.0.9
 django-crispy-forms==1.4.0
 git+https://github.com/toastdriven/django-haystack.git@master#egg=django-haystack
--e git+git@github.com:OpenIgnition/Bonfire.git@master#egg=bonfire
+-e git+git@github.com:OpenIgnition/Bonfire.git@1.7.16#egg=bonfire
 django-filebrowser==3.5.7
 django-robots==1.0
 
