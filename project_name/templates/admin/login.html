@@ -1,0 +1,50 @@
+{% extends "bonfire/layouts/base.html" %}
+{% load i18n %}
+{% load url from future %}
+
+{% block seo %}
+    <title>Login</title>
+{% endblock %}
+
+
+
+{% block body %}
+
+      <header id="login-form-header">
+            <img src="{{ STATIC_URL }}bonfire/images/bonfire-logo-medium.png" />
+
+        </header>
+    <div class="login-box">
+        <form method="post" id="login-form" class="form-horizontal">
+        <legend>Login to Bonfire</legend>
+            {% csrf_token %}
+            {% if form.errors and not form.non_field_errors and not form.this_is_the_login_form.errors %}
+                <div class="alert">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    {% blocktrans count counter=form.errors.items|length %}Please correct the error below.{% plural %}Please correct the errors below.{% endblocktrans %}
+                </div>
+            {% endif %}
+
+            <input type="hidden" name="this_is_the_login_form" value="1" />
+            <input type="hidden" name="next" value="{{ next }}" />
+
+            {% include "bonfire/partials/form_horizontal.html" %}
+
+          <div class="form-actions">
+            <div class="floatright"><a href="{% url 'password_reset' %}">{% trans "Forgot password?" %}</a></div>
+            <input type="submit" class="btn btn-primary" value="{% trans 'Log in' %}" />
+          </div>
+
+        </form>
+
+        <script type="text/javascript">
+        document.getElementById('id_username').focus()
+        </script>
+    </div>
+
+        <footer id="login-form-footer">
+            <a href="#">Learn more about bonfire</a>
+            <img src="{{ STATIC_URL }}bonfire/images/powered-by-openignition.png"  class="floatright"/>
+
+        </footer>
+{% endblock %}

@@ -146,6 +146,7 @@ INSTALLED_APPS = (
     'reversion',
     'sorl.thumbnail',
     'robots',
+    'embed_video',
 
     # CMS
     'bonfire',
