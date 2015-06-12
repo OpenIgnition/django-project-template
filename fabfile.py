@@ -23,13 +23,14 @@ def source_virtualenv():
         yield
 
 @task
-@hosts('production')
 def staging():
+    env.hosts = ['centos@host']
     env.environment = 'staging'
 
 
 @task
 def production():
+    env.hosts = ['centos@host']
     env.environment = 'production'
 
 
