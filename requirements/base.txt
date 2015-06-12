@@ -1,6 +1,6 @@
 psycopg2==2.5.4
 Pillow==2.7.0
-Django==1.6.10
+Django==1.6.11
 South==0.8.4
 pytz==2015.4
 
