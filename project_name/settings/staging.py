@@ -8,7 +8,6 @@ TEMPLATE_DEBUG = DEBUG
 
 DATABASES['default']['NAME'] = '{{ project_name }}_staging'
 DATABASES['default']['USER'] = '{{ project_name }}'
-DATABASES['default']['PORT'] = '{{ project_name }}'
 DATABASES['default']['PASSWORD'] = '{{ project_name }}'
 
 WEBSERVER_ROOT = '/var/www/{{ project_name }}/'
