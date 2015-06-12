@@ -92,6 +92,8 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.tz',
     'django.core.context_processors.request',
     'django.contrib.messages.context_processors.messages',
+    'bonfire.context_processors.version',
+    'bonfire.context_processors.config',
 )
 
 MIDDLEWARE_CLASSES = (
