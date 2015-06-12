@@ -58,3 +58,5 @@ target/
 
 # PyCharm
 .idea
+
+{{ project_name }}/settings/local.py
