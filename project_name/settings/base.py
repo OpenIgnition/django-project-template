@@ -310,7 +310,7 @@ TINYMCE_DEFAULT_CONFIG = {
     'width': "700px",
     'style_formats': tinymce_get_style_formats(),
     'content_css': tinymce_get_css(),
-    'extended_valid_elements': 'a[class|href|onmouseover|onmouseout|onclick]',
+    'extended_valid_elements': 'a[class|href|onmouseover|onmouseout|onclick|target]',
 }
 
 ADMIN_TITLE = "Bonfire - Admin Backend"
