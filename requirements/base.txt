@@ -13,7 +13,7 @@ Whoosh==2.6.0
 python-slugify==0.0.9
 django-crispy-forms==1.4.0
 git+https://github.com/toastdriven/django-haystack.git@master#egg=django-haystack
--e git+git@github.com:OpenIgnition/Bonfire.git@1.7.53#egg=bonfire
+-e git+git@github.com:OpenIgnition/Bonfire.git@1.7.71#egg=bonfire
 django-filebrowser==3.5.7
 django-robots==1.0
 
@@ -27,5 +27,17 @@ BeautifulSoup4==4.3.2
 
 raven==5.1.1
 
+google-api-python-client==1.4.0
+icalendar==3.9.0
+python_dateutil==2.4.2
+
+amqp==1.4.6
+anyjson==0.3.3
+billiard==3.3.0.19
+celery==3.1.17
+django_celery==3.1.16
+kombu==3.0.24
+
 django-localflavor==1.1
 django-embed-video==1.0.0
+django-localflavor==1.1
