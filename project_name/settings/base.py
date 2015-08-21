@@ -239,7 +239,8 @@ BONFIRE_CONFIG = {
     "WIDGETS": {"FormWidget": {"FORM_PATHS": ("main.forms", )}}
 }
 
-LOGIN_URL = "/bonfire/login/"
+LOGIN_URL = '/bonfire/login/'
+LOGIN_REDIRECT_URL = '/bonfire/dashboard/'
 
 def tinymce_get_style_formats():
     #load custom_formats file
@@ -314,6 +315,8 @@ TINYMCE_DEFAULT_CONFIG = {
 }
 
 ADMIN_TITLE = "Bonfire - Admin Backend"
+
+AUTH_PROFILE_MODULE = 'bonfire.UserProfile'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
