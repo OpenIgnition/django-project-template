@@ -318,7 +318,7 @@ ADMIN_TITLE = "Bonfire - Admin Backend"
 
 AUTH_PROFILE_MODULE = 'bonfire.UserProfile'
 
-CRISPY_TEMPLATE_PACK = 'bootstrap3'
+CRISPY_TEMPLATE_PACK = 'bootstrap'
 
 # django-filebrowser
 FILEBROWSER_DIRECTORY = ''
