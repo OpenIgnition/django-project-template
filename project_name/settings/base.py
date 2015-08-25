@@ -149,6 +149,7 @@ INSTALLED_APPS = (
     'sorl.thumbnail',
     'robots',
     'embed_video',
+    'taggit',
 
     # CMS
     'bonfire',
@@ -322,3 +323,7 @@ CRISPY_TEMPLATE_PACK = 'bootstrap'
 
 # django-filebrowser
 FILEBROWSER_DIRECTORY = ''
+
+SOUTH_MIGRATION_MODULES = {
+    'taggit': 'taggit.south_migrations',
+}

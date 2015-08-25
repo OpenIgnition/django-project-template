@@ -13,7 +13,7 @@ Whoosh==2.6.0
 python-slugify==0.0.9
 django-crispy-forms==1.4.0
 git+https://github.com/toastdriven/django-haystack.git@master#egg=django-haystack
--e git+git@github.com:OpenIgnition/Bonfire.git@1.7.71#egg=bonfire
+-e git+git@github.com:OpenIgnition/Bonfire.git@1.7.81#egg=bonfire
 django-filebrowser==3.5.7
 django-robots==1.0
 
@@ -41,3 +41,4 @@ kombu==3.0.24
 django-localflavor==1.1
 django-embed-video==1.0.0
 django-localflavor==1.1
+django-taggit==0.17.0
