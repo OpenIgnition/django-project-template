@@ -1,18 +1,18 @@
+import autocomplete_light.shortcuts as al
+
 from django.conf.urls import patterns, url, include
 from django.conf import settings
 from django.contrib import admin
 
-from filebrowser.sites import site
-
+al.autodiscover()
 admin.autodiscover()
 
 urlpatterns = patterns('',
     url(r'^tinymce/', include('tinymce.urls')),
     url(r'^superadmin/', include(admin.site.urls)),
-    url(r'^admin/filebrowser/', include(site.urls)),
-    url(r'^grappelli/', include('grappelli.urls')),
     url(r'^account/', include('django.contrib.auth.urls')),
     url(r'^robots\.txt$', include('robots.urls')),
+    url(r'^autocomplete/', include('autocomplete_light.urls')),
     url(r'', include('bonfire.urls')),
 )
 

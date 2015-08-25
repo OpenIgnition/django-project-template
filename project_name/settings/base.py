@@ -150,6 +150,7 @@ INSTALLED_APPS = (
     'robots',
     'embed_video',
     'taggit',
+    'autocomplete_light',
 
     # CMS
     'bonfire',
